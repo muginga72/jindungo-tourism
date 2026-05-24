@@ -1,0 +1,59 @@
+/* ================================
+  HOME PAGE LAYOUT
+================================ */
+
+.home-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #fafafa;
+}
+
+/* Body contains sidebar + content */
+.home-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.home-content {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+  background: #fafafa;
+}
+
+.home-content h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0b3d2e;
+  margin-bottom: 10px;
+}
+
+.home-content p {
+  font-size: 18px;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+/* Browse Tours Button */
+.browse-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #0b3d2e;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.browse-btn:hover {
+  background: #145c44;
+}
+
+@media (max-width: 900px) {
+  .home-content {
+    padding: 20px;
+  }
+}

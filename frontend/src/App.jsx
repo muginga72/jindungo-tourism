@@ -7,6 +7,8 @@ import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import NavBar from "./components/NavBar";
+import HomePage from "./pages/public/HomePage";
+import UserDashboard from "./pages/UserDashboard";
 import "./styles.css";
 
 export default function App() {
@@ -16,8 +18,9 @@ export default function App() {
         <NavBar />
         <main className="container">
           <Routes>
-            <Route path="/" element={<div>Welcome to Jindungo</div>} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/dashboard" element={<ProtectedRoute><UserDashboard /></ProtectedRoute>} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           </Routes>
