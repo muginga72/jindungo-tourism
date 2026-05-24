@@ -18,7 +18,7 @@ export default function Login() {
     setSubmitting(true);
     try {
       await login(form);
-      navigate("/profile");
+      navigate("/dashboard");
     } catch (err) {
       setError(err?.response?.data?.message || "Login failed");
     } finally {
