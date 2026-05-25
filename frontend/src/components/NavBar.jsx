@@ -1,34 +1,16 @@
 // src/components/NavBar.jsx
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-const NavBar = () => {
-  const { user, logout } = useAuth();
-  const navigate = useNavigate();
-
-  const handleLogout = async (e) => {
-    // prevent the Link from navigating immediately
-    if (e && typeof e.preventDefault === "function") e.preventDefault();
-    try {
-      await logout();
-    } catch (err) {
-      // ignore logout errors
-    } finally {
-      // After logout, navigate to dashboard
-      navigate("/dashboard");
-    }
-  };
-
+export default function NavBar() {
+  const { user } = useAuth();
   return (
-    <nav className="nav" aria-label="Main navigation">
+    <nav className="nav">
       <Link to="/">Home</Link>
-
       {user ? (
         <>
-          <Link to="/dashboard">Dashboard</Link>
           <Link to="/profile">Profile</Link>
-          <Link to="/logout" onClick={handleLogout}>Logout</Link>
         </>
       ) : (
         <>
@@ -38,6 +20,4 @@ const NavBar = () => {
       )}
     </nav>
   );
-};
-
-export default NavBar;
+}
