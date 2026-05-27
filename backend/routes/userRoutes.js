@@ -4,7 +4,7 @@ import multer from "multer";
 import path from "path";
 import fs from "fs";
 import crypto from "crypto";
-import { getUser, updateUser, removeUserFiles, deleteUser } from "../controllers/userController.js";
+import { getUser, updateUser, removeUserFiles, deleteUser, getUserDashboard } from "../controllers/userController.js";
 import { authMiddleware } from "../middleware/auth.js";
 
 const router = express.Router();
@@ -66,5 +66,6 @@ router.put(
 
 router.delete("/:id/files", authMiddleware, removeUserFiles);
 router.delete("/:id", authMiddleware, deleteUser);
+router.get("/dashboard", authMiddleware, getUserDashboard);
 
 export default router;

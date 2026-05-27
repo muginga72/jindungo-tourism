@@ -157,9 +157,31 @@ export const deleteUser = async (req, res) => {
   }
 };
 
+export const getUserDashboard = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).lean();
+
+    res.json({
+      success: true,
+      user: {
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      },
+      assignments: user.assignments || {},
+      bookings: [],             // add real data later
+      recommendedTours: [],     // add real data later
+    });
+  } catch (err) {
+    console.error("Dashboard error:", err);
+    res.status(500).json({ message: "Server error loading dashboard" });
+  }
+};
+
 export default {
   getUser,
   updateUser,
   removeUserFiles,
   deleteUser,
+  getUserDashboard,
 };
